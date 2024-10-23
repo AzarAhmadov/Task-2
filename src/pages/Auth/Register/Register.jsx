@@ -25,7 +25,7 @@ const Register = () => {
 
   const handleForm = (e) => {
     e.preventDefault();
-
+    navigate('/')
     createUser(formData);
   };
 
