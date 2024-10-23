@@ -71,7 +71,6 @@ const Login = () => {
           Login
         </Button>
       </form>
-      {error && <p className="text-red-500">Error fetching users: {error}</p>}{" "}
       <Link className="mt-4" to="/register">
         Register
       </Link>
