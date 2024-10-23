@@ -7,7 +7,7 @@ const Button = ({ type, onClick, children, loading = false }) => {
       onClick={() => onClick?.()}
       type={type}
     >
-      {loading ? "loading..." : children}
+      {children}
     </button>
   );
 };

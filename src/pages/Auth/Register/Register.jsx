@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FormGroup from "../../../ui/form/FormGroup";
 import FormText from "../../../ui/form/FormText";
 import Button from "../../../ui/button";
@@ -6,27 +6,19 @@ import useForm from "../../../hooks/useForm";
 import { createUser } from "../../../service/authService";
 import { Link, useNavigate } from "react-router-dom";
 import Container from "../../../components/Container/Container";
-import { getMyContext } from "../../../context/AuthContext";
 
 const Register = () => {
-  const { user } = getMyContext();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user]);
 
   const { formData, handleInput } = useForm({
     username: "",
     password: "",
   });
 
-  const handleForm = (e) => {
+  const handleForm = async (e) => {
     e.preventDefault();
-    navigate('/')
-    createUser(formData);
+    await createUser(formData);
+    navigate("/login");
   };
 
   return (

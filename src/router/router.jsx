@@ -17,11 +17,7 @@ const router = createBrowserRouter([
 
   {
     path: "Login",
-    element: (
-      <AuthContextProvider>
-        <Login />
-      </AuthContextProvider>
-    ),
+    element: <Login />,
   },
   {
     path: "register",

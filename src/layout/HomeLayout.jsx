@@ -9,8 +9,10 @@ const HomeLayout = () => {
     <div>
       <div className="grid h-screen place-items-center">
         <div className="flex flex-col">
-          Xos gəldin {user.username}
-          <button className="mt-4" onClick={() => removeStroge()}>Cixis et</button>
+          Xos gəldin {user?.username}
+          <button className="mt-4" onClick={() => removeStroge()}>
+            Cixis et
+          </button>
         </div>
       </div>
     </div>

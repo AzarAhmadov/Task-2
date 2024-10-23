@@ -13,10 +13,6 @@ const Login = () => {
   const { user, setUser } = getMyContext();
   const navigate = useNavigate();
 
-  if (user) {
-    navigate("/");
-  }
-
   const { formData, handleInput } = useForm({
     username: "",
     password: "",
@@ -31,18 +27,25 @@ const Login = () => {
 
     const foundUser = data.find(
       (user) =>
-        user.username === formData.username &&
-        user.password === formData.password
+        user.username === formData.username.trim() &&
+        user.password === formData.password.trim()
     );
 
     if (foundUser) {
       localStorage.setItem("user", JSON.stringify(foundUser));
-      setUser(foundUser);
-      navigate("/");
+      setUser(foundUser); // Set user state
+      navigate("/"); // Navigate after setting the user
     } else {
       alert("Invalid username or password");
     }
   };
+
+  // Check if user is logged in and navigate away if so
+  useEffect(() => {
+    if (user) {
+      navigate("/"); // Navigate to home if the user is logged in
+    }
+  }, [user, navigate]);
 
   return (
     <Container>
@@ -50,9 +53,9 @@ const Login = () => {
         <FormGroup label="Username">
           <FormText
             onChange={handleInput}
-            value={formData.username.trim()}
+            value={formData.username}
             name="username"
-            placeholder="username"
+            placeholder="Username"
             type="text"
           />
         </FormGroup>
@@ -60,7 +63,7 @@ const Login = () => {
         <FormGroup label="Password">
           <FormText
             onChange={handleInput}
-            value={formData.password.trim()}
+            value={formData.password}
             name="password"
             placeholder="Password"
             type="password"
@@ -68,7 +71,7 @@ const Login = () => {
         </FormGroup>
 
         <Button loading={loading} type="submit">
-          Login
+          {loading ? "Loading.." : "Login"}
         </Button>
       </form>
       <Link className="mt-4" to="/register">
