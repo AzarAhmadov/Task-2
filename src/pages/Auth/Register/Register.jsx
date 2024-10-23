@@ -1,7 +1,6 @@
 import React from "react";
-import FormGroup from "../../../ui/form/FormGroup";
-import FormText from "../../../ui/form/FormText";
-import Button from "../../../ui/button";
+import { Button } from "../../../ui";
+import { FormGroup, FormText } from "../../../ui/form";
 import useForm from "../../../hooks/useForm";
 import { createUser } from "../../../service/authService";
 import { Link, useNavigate } from "react-router-dom";
@@ -29,7 +28,7 @@ const Register = () => {
             onChange={handleInput}
             value={formData.username}
             name="username"
-            placeholder="username"
+            placeholder="Username"
             type="text"
           />
         </FormGroup>

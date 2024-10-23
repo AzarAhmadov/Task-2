@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import FormGroup from "../../../ui/form/FormGroup";
-import FormText from "../../../ui/form/FormText";
-import Button from "../../../ui/button";
+import { Button } from "../../../ui";
+import { FormGroup, FormText } from "../../../ui/form";
 import useForm from "../../../hooks/useForm";
 import { Link, useNavigate } from "react-router-dom";
 import Container from "../../../components/Container/Container";
@@ -33,17 +32,17 @@ const Login = () => {
 
     if (foundUser) {
       localStorage.setItem("user", JSON.stringify(foundUser));
-      setUser(foundUser); // Set user state
-      navigate("/"); // Navigate after setting the user
+      setUser(foundUser);
+      navigate("/"); 
     } else {
       alert("Invalid username or password");
     }
   };
 
-  // Check if user is logged in and navigate away if so
+
   useEffect(() => {
     if (user) {
-      navigate("/"); // Navigate to home if the user is logged in
+      navigate("/"); 
     }
   }, [user, navigate]);
 
