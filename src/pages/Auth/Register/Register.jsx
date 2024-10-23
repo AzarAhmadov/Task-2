@@ -34,7 +34,7 @@ const Register = () => {
       <form className="w-full space-y-4" onSubmit={handleForm}>
         <FormGroup label="Username">
           <FormText
-            onchange={handleInput}
+            onChange={handleInput}
             value={formData.username}
             name="username"
             placeholder="username"
@@ -44,7 +44,7 @@ const Register = () => {
 
         <FormGroup label="Password">
           <FormText
-            onchange={handleInput}
+            onChange={handleInput}
             value={formData.password}
             name="password"
             placeholder="Password"
